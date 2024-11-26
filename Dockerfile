@@ -1,6 +1,6 @@
 # Stage 1: Build the application
 FROM maven:3.9.4-eclipse-temurin-21 AS build
-LABEL authors="bionemac"
+LABEL authors="Eiki"
 LABEL description="This is the Dockerfile for the Users service"
 
 # Set the working directory

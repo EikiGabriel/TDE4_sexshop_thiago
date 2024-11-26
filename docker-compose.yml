@@ -4,17 +4,17 @@ services:
     ports:
       - '8091:8091'
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres.railway.internal:5432/railway
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=YdpBbknMwJaDmIUXPMiSKiWoJgpmovei
+      - SPRING_DATASOURCE_URL=jdbc:${{Postgres.DATABASE_URL}}
+      - SPRING_DATASOURCE_USERNAME=${{Postgres.PGUSER}}
+      - SPRING_DATASOURCE_PASSWORD=${{Postgres.PGPASSWORD}}
     depends_on:
       - db
   db:
     image: postgres:14
     environment:
-      - POSTGRES_DB=railway
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=YdpBbknMwJaDmIUXPMiSKiWoJgpmovei
+      - POSTGRES_DB=${{Postgres.POSTGRES_DB}}
+      - POSTGRES_USER=${{Postgres.PGUSER}}
+      - POSTGRES_PASSWORD=${{Postgres.PGPASSWORD}}
     volumes:
       - db-data:/var/lib/postgresql/data
 
